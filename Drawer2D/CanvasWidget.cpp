@@ -49,7 +49,8 @@ void CanvasWidget::mousePressEvent(QMouseEvent* event) {
         }
         }
         if (m_pShape != nullptr) {
-            m_pInvoker->DoCommand(new DrawCommand(this));
+            if (m_pInvoker->UndoEmpty())
+            { m_pInvoker->DoCommand(new DrawCommand(this)); }
             m_perm = false;
             AddShape(m_pShape, m_pen);
             m_pShape->SetStartPoint(event->pos());
@@ -68,6 +69,7 @@ void CanvasWidget::mouseMoveEvent(QMouseEvent* event) {
 
 void CanvasWidget::mouseReleaseEvent(QMouseEvent* event)
 {
+    m_pInvoker->DoCommand(new DrawCommand(this));
     m_perm = true;
 }
 

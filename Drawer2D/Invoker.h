@@ -10,11 +10,9 @@ public:
     void DoCommand(Command* curCommand);
     void UndoCommand();
     void RedoCommand();
-
-
-    Command* p_curCommand = nullptr;
+    bool UndoEmpty() const;
+    Command* pLastCmd;
     QStack<Command*> m_undoStack;
     QStack<Command*> m_redoStack;
-    int pos = 0;
 };
 

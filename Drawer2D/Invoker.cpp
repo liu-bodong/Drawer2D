@@ -1,23 +1,21 @@
 #include "Invoker.h"
 #include <qdebug.h>
 
-void Invoker::DoCommand(Command* curCommand)
+void Invoker::DoCommand(Command* curCmd)
 {
-    curCommand->execute();
-    m_undoStack.push(curCommand);
+    curCmd->execute();
+    m_undoStack.push(pLastCmd);
     m_redoStack.clear();
-    qDebug() << "Do: Undo stack size is: " << m_undoStack.size();
+    pLastCmd = curCmd;
 }
 
 void Invoker::UndoCommand()
 {
-    if (!m_undoStack.isEmpty())
+    if (!m_undoStack.isEmpty() && pLastCmd)
     {
-        auto curCommand = m_undoStack.pop();
-        curCommand->undo();
-        m_redoStack.push(curCommand);
-        qDebug() << "Undo: Undo stack size is: " << m_undoStack.size();
-        qDebug() << "Undo: Redo stack size is: " << m_redoStack.size();
+        m_redoStack.push(pLastCmd);
+        pLastCmd = m_undoStack.pop();
+        if (pLastCmd) { pLastCmd->undo(); }
     }
 }
 
@@ -25,11 +23,14 @@ void Invoker::RedoCommand()
 {
     if (!m_redoStack.isEmpty())
     {
-        auto curCommand = m_redoStack.pop();
-        curCommand->redo();
-        m_undoStack.push(curCommand);
-        qDebug() << "Redo: Undo stack size is: " << m_undoStack.size();
-        qDebug() << "Redo: Redo stack size is: " << m_redoStack.size();
+        m_undoStack.push(pLastCmd);
+        pLastCmd = m_redoStack.pop();
+        pLastCmd->redo();
     }
+}
+
+bool Invoker::UndoEmpty() const
+{
+    return(m_undoStack.size() == 0);
 }
 
