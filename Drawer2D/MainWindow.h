@@ -26,6 +26,9 @@ public slots:
 
 private:
     Ui::DrawerMainWindowClass ui;
-    Invoker* m_invoker = new Invoker();
-    Command* m_command;
+    Invoker* m_pInvoker = new Invoker();
+    // Command* m_command;
+
+    void MakeConnections() const;
+    void InitUI();
 };

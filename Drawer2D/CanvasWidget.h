@@ -29,6 +29,8 @@ public:
 
     void Clear();
 
+    Invoker* m_pInvoker;
+
 
 public slots:
     void setCurShape(Shape::ShapeType);
@@ -49,6 +51,5 @@ private:
     QList<std::shared_ptr<Item>> m_shapes;
     QPen m_pen;
 
-    std::shared_ptr<Invoker> m_invoker = std::make_shared<Invoker>();
     Command* m_command;
 };

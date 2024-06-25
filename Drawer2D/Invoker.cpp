@@ -3,22 +3,21 @@
 
 void Invoker::DoCommand(Command* curCommand)
 {
-    qDebug() << "Invoke Do";
     curCommand->execute();
     m_undoStack.push(curCommand);
     m_redoStack.clear();
-    qDebug() << "Invoker stack count is: " << m_undoStack.count();
+    qDebug() << "Do: Undo stack size is: " << m_undoStack.size();
 }
 
 void Invoker::UndoCommand()
 {
-    qDebug() << "Invoke Undo 1";
     if (!m_undoStack.isEmpty())
     {
-        qDebug() << "Invoke Undo";
         auto curCommand = m_undoStack.pop();
         curCommand->undo();
         m_redoStack.push(curCommand);
+        qDebug() << "Undo: Undo stack size is: " << m_undoStack.size();
+        qDebug() << "Undo: Redo stack size is: " << m_redoStack.size();
     }
 }
 
@@ -26,10 +25,11 @@ void Invoker::RedoCommand()
 {
     if (!m_redoStack.isEmpty())
     {
-        qDebug() << "Invoke Redo";
         auto curCommand = m_redoStack.pop();
         curCommand->redo();
         m_undoStack.push(curCommand);
+        qDebug() << "Redo: Undo stack size is: " << m_undoStack.size();
+        qDebug() << "Redo: Redo stack size is: " << m_redoStack.size();
     }
 }
 

@@ -49,10 +49,8 @@ void CanvasWidget::mousePressEvent(QMouseEvent* event) {
         }
         }
         if (m_pShape != nullptr) {
+            m_pInvoker->DoCommand(new DrawCommand(this));
             m_perm = false;
-            //m_invoker->DoCommand(new DrawCommand(this));
-
-
             AddShape(m_pShape, m_pen);
             m_pShape->SetStartPoint(event->pos());
             m_pShape->SetEndPoint(event->pos());
@@ -70,9 +68,6 @@ void CanvasWidget::mouseMoveEvent(QMouseEvent* event) {
 
 void CanvasWidget::mouseReleaseEvent(QMouseEvent* event)
 {
-    m_command = new DrawCommand(this);
-    m_command->execute();
-    qDebug() << "Point 5 Command stack count is: " << m_command->m_undoStack.size();
     m_perm = true;
 }
 
@@ -112,6 +107,5 @@ void CanvasWidget::SetCurVer(QList<std::shared_ptr<Item>> shapes)
 
 Memento* CanvasWidget::CreateMemento()
 {
-    qDebug() << "Create Memento";
     return new Memento(this);
 }

@@ -8,12 +8,11 @@
 class Command : public QUndoCommand
 {
 public:
-    CanvasWidget* m_canvas;
-    std::stack<Memento*> m_undoStack;
-    std::stack<Memento*> m_redoStack;
+    CanvasWidget* m_pCanvas;
+    Memento* m_pMem;
 
 public:
-    explicit Command(CanvasWidget* canvas) : m_canvas(canvas) {}
+    explicit Command(CanvasWidget* canvas) : m_pCanvas(canvas) {}
     ~Command() override = default;
     virtual void execute() = 0;
 
