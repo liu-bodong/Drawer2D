@@ -31,6 +31,6 @@ void Invoker::RedoCommand()
 
 bool Invoker::UndoEmpty() const
 {
-    return(m_undoStack.size() == 0);
+    return m_undoStack.empty();
 }
 

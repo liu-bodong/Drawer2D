@@ -33,5 +33,6 @@ void DrawCommand::execute()
 void ClearCommand::execute()
 {
     m_pCanvas->Clear();
+    save();
     m_pCanvas->update();
 }
