@@ -1,2 +1,2 @@
 # Drawer2D
-f
+A 2D drawing application developed using QT 5.
