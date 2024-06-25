@@ -3,7 +3,7 @@
 #include "Rect.h"
 #include "Circle.h"
 #include "Ellipse.h"
-
+#include <qpainterpath.h>
 #include <qdebug.h>
 
 #include "Command.h"
@@ -13,6 +13,7 @@ CanvasWidget::CanvasWidget(QWidget* parent)
     : QWidget(parent)
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    QPainterPath path;
 }
 
 void CanvasWidget::paintEvent(QPaintEvent* event) {
