@@ -17,13 +17,34 @@ CanvasWidget::CanvasWidget(QWidget* parent)
 
 void CanvasWidget::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+
     for (std::shared_ptr<Item> item : m_shapes) {
         painter.setPen(item->getPen());
         (item->getShape())->Paint(painter);
     }
 }
 
-void CanvasWidget::mousePressEvent(QMouseEvent* event) {
+void CanvasWidget::mousePressEvent(QMouseEvent* event)
+{
+    if (m_mode == eDraw) {
+        Draw(event);
+    }
+    else if (m_mode == eSelect) {
+        Select(event);
+    }
+}
+
+void CanvasWidget::mouseMoveEvent(QMouseEvent* event) {
+
+    if (m_pShape && !m_perm) {
+        m_pShape->SetEndPoint(event->pos());
+        update();
+    }
+}
+
+void CanvasWidget::Draw(QMouseEvent* event)
+{
     if (event->button() == Qt::LeftButton) {
         m_perm = true;
         switch (m_shapeType) {
@@ -59,12 +80,15 @@ void CanvasWidget::mousePressEvent(QMouseEvent* event) {
     }
 }
 
-void CanvasWidget::mouseMoveEvent(QMouseEvent* event) {
+void CanvasWidget::Select(QMouseEvent* event)
+{
+    // implement select
 
-    if (m_pShape && !m_perm) {
-        m_pShape->SetEndPoint(event->pos());
-        update();
-    }
+}
+
+void CanvasWidget::mouseDoubleClickEvent(QMouseEvent* event)
+{
+    return;
 }
 
 void CanvasWidget::mouseReleaseEvent(QMouseEvent* event)
@@ -110,4 +134,9 @@ void CanvasWidget::SetCurVer(QList<std::shared_ptr<Item>> shapes)
 Memento* CanvasWidget::CreateMemento()
 {
     return new Memento(this);
+}
+
+void CanvasWidget::setMode(CanvasWidget::Mode mode)
+{
+    m_mode = mode;
 }

@@ -14,6 +14,7 @@ public:
 
 signals:
     void changeShape(Shape::ShapeType);
+    void changeMode(CanvasWidget::Mode);
 
 public slots:
     void actionDrawLineTriggered();
@@ -23,11 +24,12 @@ public slots:
     void on_Undo_Clicked();
     void on_Redo_Clicked();
     void on_Clear_Clicked();
+    void actionDrawToggled();
+    void actionSelectToggled();
 
 private:
     Ui::DrawerMainWindowClass ui;
     Invoker* m_pInvoker = new Invoker();
-    // Command* m_command;
 
     void MakeConnections() const;
     void InitUI();
