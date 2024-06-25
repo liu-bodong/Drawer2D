@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Drawer2D", "Drawer2D\Drawer2D.vcxproj", "{136FF2E7-FBC1-4400-90F3-408FBA5A8977}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{136FF2E7-FBC1-4400-90F3-408FBA5A8977}.Debug|x64.ActiveCfg = Debug|x64
+		{136FF2E7-FBC1-4400-90F3-408FBA5A8977}.Debug|x64.Build.0 = Debug|x64
+		{136FF2E7-FBC1-4400-90F3-408FBA5A8977}.Release|x64.ActiveCfg = Release|x64
+		{136FF2E7-FBC1-4400-90F3-408FBA5A8977}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4815F05F-72C9-487A-9220-DB4C8F0AAB64}
+	EndGlobalSection
+EndGlobal
