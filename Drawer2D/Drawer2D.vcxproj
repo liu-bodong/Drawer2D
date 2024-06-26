@@ -102,9 +102,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="Ellipse.cpp" />
     <ClCompile Include="Invoker.cpp" />
+    <ClCompile Include="Line.cpp" />
     <ClCompile Include="Memento.cpp" />
+    <ClCompile Include="Rect.cpp" />
     <QtRcc Include="DrawerMainWindow.qrc" />
     <QtUic Include="DrawerMainWindow.ui" />
     <QtMoc Include="MainWindow.h" />

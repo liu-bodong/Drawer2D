@@ -6,9 +6,6 @@ class Line :
 public:
     Line() = default;
     ~Line() override = default;
-    void Paint(QPainter& painter) override
-    {
-        painter.drawLine(m_start, m_end);
-    }
+    void Paint(QPainter& painter) override;
 };
 
