@@ -23,4 +23,7 @@ public:
 
     void virtual Paint(QPainter&) = 0;
 
+protected:
+    QPoint m_start;
+    QPoint m_end;
 };
