@@ -104,5 +104,8 @@
     <ClInclude Include="Invoker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CmdFactory.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

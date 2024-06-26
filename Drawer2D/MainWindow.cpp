@@ -68,22 +68,22 @@ void MainWindow::InitUI()
 
 void MainWindow::actionDrawLineTriggered()
 {
-    emit changeShape(Shape::eLine);
+
 }
 
 void MainWindow::actionDrawRecTriggered()
 {
-    emit changeShape(Shape::eRect);
+
 }
 
 void MainWindow::actionDrawCircleTriggered()
 {
-    emit changeShape(Shape::eCircle);
+
 }
 
 void MainWindow::actionDrawEllipseTriggered()
 {
-    emit changeShape(Shape::eEllipse);
+
 }
 
 void MainWindow::actionDrawToggled()

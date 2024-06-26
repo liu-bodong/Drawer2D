@@ -13,7 +13,6 @@ public:
     ~MainWindow() = default;
 
 signals:
-    void changeShape(Shape::ShapeType);
     void changeMode(CanvasWidget::Mode);
 
 public slots:

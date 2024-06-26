@@ -7,4 +7,7 @@ void Circle::Paint(QPainter& painter)
     auto path = QPainterPath();
     path.addEllipse(QRect(m_start, m_end));
     painter.drawPath(path);
+
+    QPoint m_center;
+    int m_radius = 0;
 }

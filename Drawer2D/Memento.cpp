@@ -7,7 +7,7 @@ Memento::Memento(CanvasWidget* canvasWidget) : m_canvas(canvasWidget)
     m_shapes = m_canvas->GetShapes();
 }
 
-void Memento::restore()
+void Memento::Restore()
 {
     m_canvas->SetCurVer(m_shapes);
 }

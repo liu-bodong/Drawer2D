@@ -134,6 +134,12 @@
      <height>30</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFadsf">
+    <property name="title">
+     <string>fadsf</string>
+    </property>
+   </widget>
+   <addaction name="menuFadsf"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="font">

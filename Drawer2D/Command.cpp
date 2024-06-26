@@ -1,29 +1,24 @@
 #include "Command.h"
 #include "CanvasWidget.h"
 #include <qdebug.h>
-
-// ##################### Command ##################################
-void Command::save()
-{
-    m_pMem = m_pCanvas->CreateMemento();
-}
-
-void Command::undo()
-{
-    m_pMem->restore();
-    m_pCanvas->update();
-}
-
-void Command::redo()
-{
-    m_pMem->restore();
-    m_pCanvas->update();
-}
-
-
 // ##################### Draw ##################################
 
-void DrawCommand::execute()
+void DrawLineCommand::execute()
+{
+    save();
+}
+
+void DrawRectCommand::execute()
+{
+    save();
+}
+
+void DrawEllipseCommand::execute()
+{
+    save();
+}
+
+void DrawCircleCommand::execute()
 {
     save();
 }

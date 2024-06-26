@@ -32,7 +32,6 @@ public:
 
 
 public slots:
-    void setCurShape(Shape::ShapeType);
     void setPenSize(int);
     void setPenColor(const QString&);
     void setMode(CanvasWidget::Mode);
@@ -46,7 +45,6 @@ protected:
 
 private:
     std::shared_ptr<Shape> m_pShape = nullptr;   // The shape that is being currently edited
-    Shape::ShapeType m_shapeType = Shape::eLine; // The type of the shape that is being drawn
     bool m_perm = false;                         // Whether there is a shape being drawn at the moment
     QList<std::shared_ptr<Item>> m_shapes;       // The list of shapes that have been drawn
     QPen m_pen;                                  // The pen that is used to draw the shapes

@@ -48,35 +48,13 @@ void CanvasWidget::Draw(QMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
         m_perm = true;
-        switch (m_shapeType) {
-        case Shape::eLine:
-        {
-            m_pShape = std::make_shared<Line>();
-            break;
-        }
-        case Shape::eRect:
-        {
-            m_pShape = std::make_shared<Rect>();
-            break;
-        }
-        case Shape::eCircle:
-        {
-            m_pShape = std::make_shared<Circle>();
-            break;
-        }
-        case Shape::eEllipse:
-        {
-            m_pShape = std::make_shared<IEllipse>();
-            break;
-        }
-        }
+
         if (m_pShape != nullptr) {
-            if (m_pInvoker->UndoEmpty())
-            { m_pInvoker->DoCommand(new DrawCommand(this)); }
+            /*if (m_pInvoker->UndoEmpty())
+            { m_pInvoker->DoCommand(new DrawCommand(this)); }*/
             m_perm = false;
             AddShape(m_pShape, m_pen);
-            m_pShape->SetStartPoint(event->pos());
-            m_pShape->SetEndPoint(event->pos());
+            // pass in the points
         }
     }
 }
@@ -89,6 +67,7 @@ void CanvasWidget::Select(QMouseEvent* event)
 
 void CanvasWidget::mouseDoubleClickEvent(QMouseEvent* event)
 {
+    // TODO: implement double click event
     return;
 }
 
@@ -103,8 +82,6 @@ void CanvasWidget::AddShape(std::shared_ptr<Shape> shape, QPen pen)
     auto item = std::make_shared<Item>(shape, pen);
     m_shapes.append(item);
 }
-
-void CanvasWidget::setCurShape(Shape::ShapeType st) { m_shapeType = st; }
 
 void CanvasWidget::Clear()
 {

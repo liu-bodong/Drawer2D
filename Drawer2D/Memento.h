@@ -10,7 +10,7 @@ class Memento
 public:
     explicit Memento(CanvasWidget* canvasWidget);
 
-    void restore();
+    void Restore();
 
 private:
     CanvasWidget* m_canvas;

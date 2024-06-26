@@ -1,28 +1,56 @@
 #pragma once
-#include <qstack.h>
-#include <qundostack.h>
 #include "CanvasWidget.h"
 #include "Memento.h"
-#include <stack>
 
-class Command : public QUndoCommand
+class Command
 {
-public:
+protected:
     CanvasWidget* m_pCanvas;
     Memento* m_pMem;
 
 public:
-    explicit Command(CanvasWidget* canvas) : m_pCanvas(canvas) {}
-    ~Command() override = default;
+    explicit Command(CanvasWidget* canvas) : m_pCanvas(canvas) {};
+    virtual ~Command() = default;
     virtual void execute() = 0;
 
-    void undo() override;
-    void redo() override;
+    virtual void undo()
+    {
+        m_pMem->Restore();
+        m_pCanvas->update();
+    }
 
-    void save();
+    virtual void redo()
+    {
+        m_pMem->Restore();
+        m_pCanvas->update();
+    }
+
+    void save() { m_pMem = m_pCanvas->CreateMemento(); }
 };
 
-class DrawCommand : public Command
+class DrawLineCommand : public Command
+{
+public:
+    using Command::Command;
+    void execute() override;
+    void draw
+};
+
+class DrawRectCommand : public Command
+{
+public:
+    using Command::Command;
+    void execute() override;
+};
+
+class DrawEllipseCommand : public Command
+{
+public:
+    using Command::Command;
+    void execute() override;
+};
+
+class DrawCircleCommand : public Command
 {
 public:
     using Command::Command;
